@@ -1,0 +1,14 @@
+<h1 md-dialog-title>Add/Edit Task</h1>
+<div md-dialog-content>
+    <md-input-container>
+        <input [(ngModel)]="_task.title" mdInput placeholder="Title">
+    </md-input-container>
+    <md-input-container>
+        <input [(ngModel)]="_task.description" mdInput placeholder="Description">
+    </md-input-container>
+
+</div>
+<div md-dialog-actions>
+    <button md-button (click)="_dialogRef.close('Cancelß')">Cancel</button>
+    <button md-button (click)="_dialogRef.close('OK')">OK</button>
+</div>

@@ -1,0 +1,9 @@
+<md-toolbar class="main">
+    <span>{{title}}</span>
+    <span class="toolbar-spacer"></span>
+    <button class="toolbar-icon" (click)="onAddTask($event)" md-button>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+</md-toolbar>
+
+<app-stage *ngFor="let stage of stages" title="{{stage}}"></app-stage>
