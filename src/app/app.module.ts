@@ -13,6 +13,8 @@ import { RepositoryService } from './service/repository.service'
 import { FilterModule } from "app/modules/filter.module";
 import { TaskFormComponent } from './task-form/task-form.component';
 
+declare var electron: any; 
+
 @NgModule({
   declarations: [
     AppComponent,

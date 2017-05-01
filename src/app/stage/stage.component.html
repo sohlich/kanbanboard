@@ -1,8 +1,10 @@
-<md-grid-list cols="4" rowHeight="200" dnd-droppable class="stage" (onDropSuccess)="acceptDrop($event)">
-    <md-grid-tile [colspan]="4">
-        {{title}}
-    </md-grid-tile>
-    <md-grid-tile [colspan]="4" *ngFor="let task of _storage._observableList | async | stageFilter:title">
-        <app-task [task]="task"></app-task>
-    </md-grid-tile>
-</md-grid-list>
+<md-card class="stage_header">
+    <md-card-header class="title">
+        <span>{{title}}</span>
+    </md-card-header>
+    <md-card-content cols="4" dnd-droppable class="stage" (onDropSuccess)="acceptDrop($event)">
+        <div class="card_content">
+            <app-task [task]="task" class="task" *ngFor="let task of _storage._observableList | async | stageFilter:title"></app-task>
+        </div>
+    </md-card-content>
+</md-card>

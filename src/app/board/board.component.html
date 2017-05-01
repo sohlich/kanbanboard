@@ -5,5 +5,6 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
 </md-toolbar>
-
-<app-stage *ngFor="let stage of stages" title="{{stage}}"></app-stage>
+<div class="stages">
+    <app-stage *ngFor="let stage of stages" title="{{stage}}" class="stage"></app-stage>
+</div>

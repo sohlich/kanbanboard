@@ -10,6 +10,7 @@ import { RepositoryService } from './../service/repository.service'
 export class StageComponent implements OnInit {
 
   @Input() title: string;
+  @Input() columnWidth: number;
 
   constructor(private _storage: RepositoryService) {
   }

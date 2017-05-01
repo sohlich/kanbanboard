@@ -5,3 +5,14 @@
 .toolbar-spacer {
     flex: 1 1 auto;
 }
+
+.stages {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.stage {
+    flex: 1;
+}
