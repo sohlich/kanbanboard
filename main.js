@@ -1,25 +1,36 @@
 // ./main.js
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow } = require('electron');
 
 let win = null;
 
 app.on('ready', function() {
 
-    // Initialize the window to our specified dimensions
-    win = new BrowserWindow({ width: 1280, height: 960 });
+    var path = require('path');
+    var url = require('url');
+
 
     // Specify entry point
-    win.loadURL('http://localhost:4200');
+    var openWindow = function() {
+        mainWindow = new BrowserWindow({ width: 1280, height: 960 });
+        mainWindow.loadURL(url.format({
+            pathname: path.join(__dirname, 'dist', 'index.html'),
+            protocol: 'file:',
+            slashes: true
+        }));
 
-    // Show dev tools
-    // Remove this line before distributing
-    win.webContents.openDevTools()
+        mainWindow.webContents.openDevTools();
+        mainWindow.on('closed', function() {
+            mainWindow = null;
+        });
+    };
 
-    // Remove window once app is closed
-    win.on('closed', function() {
-        win = null;
-    });
+    var startUp = function() {
+        console.log('server started!');
+        openWindow();
+    };
 
+    // fire!
+    startUp();
 });
 
 app.on('activate', () => {

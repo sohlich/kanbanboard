@@ -1,6 +1,5 @@
 .stage {
     width: 100%;
-    /*max-width: 100vw;*/
     display: inline-flex;
     border: 10px;
     vertical-align: top;
@@ -11,6 +10,7 @@
 .stage_header {
     width: 100%;
     display: inline-block;
+    flex: 1;
 }
 
 .title {
@@ -19,4 +19,11 @@
     font-family: Roboto, Helvetica Neue, sans-serif;
 }
 
-.task {}
+.task {
+    width: 100%;
+    padding: 2px;
+}
+
+.card_content {
+    width: 100%;
+}
