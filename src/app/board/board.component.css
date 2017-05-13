@@ -13,6 +13,16 @@
     flex-direction: row;
 }
 
+.toolbar {
+    flex: 1;
+}
+
 .stage {
     flex: 1;
+}
+
+#title {
+    font-weight: 900;
+    font-size: 20px;
+    font-family: Roboto, Helvetica Neue, sans-serif;
 }

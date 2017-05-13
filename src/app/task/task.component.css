@@ -1,4 +1,24 @@
-.card_content {
-    width: 70%;
+.task_box {
+    width: 90%;
+    border: 1px solid transparent;
+}
+
+.task_title {
+    background-color: khaki;
+    padding: 10px;
+}
+
+.task_description {
     background-color: yellow;
+    padding: 10px;
+}
+
+.yellow {}
+
+.green {
+    background-color: green;
+}
+
+.bold {
+    font-weight: 600;
 }

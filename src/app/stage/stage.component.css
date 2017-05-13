@@ -1,4 +1,4 @@
-.stage {
+.tasklist {
     width: 100%;
     display: inline-flex;
     border: 10px;
@@ -7,21 +7,22 @@
     flex: 1;
 }
 
-.stage_header {
+.stage {
     width: 100%;
     display: inline-block;
     flex: 1;
+    padding: 10px;
 }
 
 .title {
     font-size: 20px;
     font-weight: 500;
     font-family: Roboto, Helvetica Neue, sans-serif;
+    padding-block-end: 10px;
 }
 
 .task {
     width: 100%;
-    padding: 2px;
 }
 
 .card_content {

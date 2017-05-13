@@ -1,10 +1,10 @@
-<md-card class="stage_header">
-    <md-card-header class="title">
+<div class="stage">
+    <div class="title">
         <span>{{title}}</span>
-    </md-card-header>
-    <md-card-content cols="4" dnd-droppable class="stage" (onDropSuccess)="acceptDrop($event)">
+    </div>
+    <div cols="4" dnd-droppable class="tasklist" (onDropSuccess)="acceptDrop($event)">
         <div class="card_content">
             <app-task [task]="task" class="task" *ngFor="let task of _storage._observableList | async | stageFilter:title"></app-task>
         </div>
-    </md-card-content>
-</md-card>
+    </div>
+</div>

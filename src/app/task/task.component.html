@@ -1,8 +1,8 @@
-<md-card dnd-draggable class="card_content" [dragEnabled]="true" [dragData]="task" (onDragSuccess)="onDrag($event)">
-    <md-card-header>
-        {{task.title}}
-    </md-card-header>
-    <md-card-content>
+<div dnd-draggable class="task_box" [dragEnabled]="true" [dragData]="task" (onDragSuccess)="onDrag($event)">
+    <div class="task_title">
+        <span class="bold">Title:</span>&nbsp;{{task.title}}
+    </div>
+    <div class="task_description">
         {{task.description}}
-    </md-card-content>
-</md-card>
+    </div>
+</div>
