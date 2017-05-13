@@ -1,10 +1,11 @@
 .task_box {
-    width: 90%;
+    display: flex;
     border: 1px solid transparent;
+    flex-direction: column;
 }
 
 .task_title {
-    background-color: khaki;
+    background-color: #ffeda3;
     padding: 10px;
     display: flex;
 }
@@ -14,9 +15,16 @@
 }
 
 .task_description {
-    background-color: yellow;
+    background-color: #ffe680;
     padding: 10px;
     min-height: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.task_description p {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .spacer {

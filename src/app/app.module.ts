@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
@@ -12,8 +14,12 @@ import {DndModule} from 'ng2-dnd';
 import { RepositoryService } from './service/repository.service'
 import { FilterModule } from "app/modules/filter.module";
 import { TaskFormComponent } from './task-form/task-form.component';
+import { BoardListComponent } from './board-list/board-list.component';
 
-declare var electron: any; 
+const appRoutes: Routes = [
+  { path: 'board', component: BoardComponent },
+  { path: '**', component: BoardComponent }
+];
 
 @NgModule({
   declarations: [
@@ -21,7 +27,8 @@ declare var electron: any;
     BoardComponent,
     StageComponent,
     TaskComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    BoardListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +36,7 @@ declare var electron: any;
     HttpModule,
     MaterialModule,
     DndModule.forRoot(),
+    RouterModule.forRoot(appRoutes),
     FilterModule
   ],
   providers: [RepositoryService],
