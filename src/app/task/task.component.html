@@ -1,6 +1,10 @@
 <div dnd-draggable class="task_box" [dragEnabled]="true" [dragData]="task" (onDragSuccess)="onDrag($event)">
     <div class="task_title">
-        <span class="bold">Title:</span>&nbsp;{{task.title}}
+        <span class="bold">Title:</span>&nbsp;{{task.title}}<span class="spacer"></span>
+        <div class="buttons">
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
+            <i class="fa fa-archive" aria-hidden="true"></i>
+        </div>
     </div>
     <div class="task_description">
         {{task.description}}

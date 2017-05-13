@@ -14,7 +14,7 @@ export class BoardComponent implements OnInit {
 
   @Input() title: string = "Kanban board"
   stages: string[] = [];
-  
+
 
   constructor(private _storage: RepositoryService, public dialog: MdDialog) {
     this.stages[0] = 'TODO';
@@ -33,8 +33,8 @@ export class BoardComponent implements OnInit {
   onAddTask(event: any) {
 
     let dialogRef = this.dialog.open(TaskFormComponent, {
-      height: '400px',
-      width: '600px',
+      width: '50vw',
+      height: '25vh',
       data: new Task()
     });
 
