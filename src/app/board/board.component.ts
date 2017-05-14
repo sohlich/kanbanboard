@@ -3,6 +3,7 @@ import { Task } from "app/model/task";
 import { RepositoryService } from "app/service/repository.service";
 import { MdDialog } from "@angular/material";
 import { TaskFormComponent } from "app/task-form/task-form.component";
+import { Board } from "app/model/board";
 
 
 @Component({
@@ -12,22 +13,14 @@ import { TaskFormComponent } from "app/task-form/task-form.component";
 })
 export class BoardComponent implements OnInit {
 
-  @Input() title: string = "Kanban board"
-  stages: string[] = [];
-
+  board: Board;
 
   constructor(private _storage: RepositoryService, public dialog: MdDialog) {
-    this.stages[0] = 'TODO';
-    this.stages[1] = 'In progress';
-    this.stages[2] = 'Done';
+    this.board = _storage.getCurrentBoard();
   }
 
   ngOnInit() {
     this._storage.refresh();
-  }
-
-  getStageWidth() {
-    return 100 / this.stages.length;
   }
 
   onAddTask(event: any) {
@@ -42,7 +35,7 @@ export class BoardComponent implements OnInit {
       if (result !== "OK") { return; }
       let task = dialogRef.config.data;
       task.created = new Date().getTime();
-      task.stage = this.stages[0];
+      task.stage = this.board.stages[0];
       this._storage.addTask(task);
       obs.unsubscribe();
     });

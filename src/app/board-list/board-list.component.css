@@ -1,0 +1,19 @@
+.boards {
+    display: flex;
+    flex-direction: row;
+    padding-left: 25%;
+    width: 50%;
+}
+
+.board {
+    width: 100%;
+    min-height: 5vh;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.bold {
+    font-weight: 600;
+}

@@ -18,7 +18,7 @@ import { BoardListComponent } from './board-list/board-list.component';
 
 const appRoutes: Routes = [
   { path: 'board', component: BoardComponent },
-  { path: '**', component: BoardComponent }
+  { path: '**', component: BoardListComponent }
 ];
 
 @NgModule({
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     HttpModule,
     MaterialModule,
     DndModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes,{ enableTracing: true }),
     FilterModule
   ],
   providers: [RepositoryService],
