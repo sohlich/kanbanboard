@@ -5,12 +5,14 @@
             <i class="fa fa-plus" aria-hidden="true"></i>
         </button>-->
 </md-toolbar>
-<div class="boards" *ngFor="let board of _storage._observableBoards | async">
-    <div class="board" (click)="toBoard(board)">
-        <span class="bold">{{board.title}}</span><span class="spacer"></span>
+<div class="boards">
+    <button *ngFor="let board of _storage._observableBoards | async" class="board" (click)="toBoard(board)" md-button>
         <span class="buttons">
-            <i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
-            <i class="fa fa-archive" aria-hidden="true"></i>
+
+            <!--<i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
+            <i class="fa fa-archive" aria-hidden="true"></i>-->
+            <i *ngIf="board.default" class="fa fa-home" aria-hidden="true"></i>
         </span>
-    </div>
+        <span class="bold">{{board.title}}</span>
+    </button>
 </div>

@@ -23,6 +23,7 @@ export class TaskComponent implements OnInit {
 
   onDelete(){
     this._storage.removeTask(this.task);
+    this._storage.autosave();
   }
 
 }

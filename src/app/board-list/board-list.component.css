@@ -1,6 +1,6 @@
 .boards {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 25%;
     width: 50%;
 }
@@ -8,6 +8,8 @@
 .board {
     width: 100%;
     min-height: 5vh;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    display: flex;
 }
 
 .spacer {
@@ -15,5 +17,10 @@
 }
 
 .bold {
-    font-weight: 600;
+    flex: 1;
+    font-weight: 900;
+}
+
+.buttons {
+    flex: 1;
 }

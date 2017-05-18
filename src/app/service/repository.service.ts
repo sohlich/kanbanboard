@@ -16,6 +16,7 @@ export class RepositoryService {
   _boards: Board[] = [];
   _observableList: BehaviorSubject<Task[]> = new BehaviorSubject([]);
   _observableBoards: BehaviorSubject<Board[]> = new BehaviorSubject([]);
+  _observableCurrentBoard: BehaviorSubject<Board> = new BehaviorSubject(new Board());
 
   _appDataFolder: string;
   private _currentBoard: Board;
@@ -47,6 +48,7 @@ export class RepositoryService {
     this._currentBoard = board;
     console.log("Loading board: "+JSON.stringify(board));
     this.loadBoardData(board.title);
+    this._observableCurrentBoard.next(this._currentBoard);
   }
 
    getCurrentBoard():Board {
@@ -56,11 +58,7 @@ export class RepositoryService {
   addTask(task: Task) {
     this._tasks.push(task);
     this.refresh();
-    fs.writeFile(path.join(this._boardFile), JSON.stringify(this._tasks), (err) => {
-      if (err) {
-        console.log("An error ocurred creating the file " + err.message);
-      }
-    });
+    this.autosave();
   }
 
   removeTask(task: Task) {
@@ -70,7 +68,11 @@ export class RepositoryService {
       this._tasks.splice(index, 1);
     }
     this.refresh();
+    this.autosave();
   }
+
+
+
 
   refresh() {
     this._observableList.next(this._tasks);
@@ -89,7 +91,14 @@ export class RepositoryService {
         encoding: 'utf8'
       });
       this._tasks = <Task[]>JSON.parse(t);
+    }else{
+      this._tasks = [];
     }
+  }
+
+   autosave(){
+    console.log("Writing to file "+this._boardFile);
+    fs.writeFileSync(path.join(this._boardFile), JSON.stringify(this._tasks));
   }
 
 }

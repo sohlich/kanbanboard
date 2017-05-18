@@ -20,6 +20,9 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._storage._observableCurrentBoard.subscribe(res =>{
+      this.board = res;
+    });
     this._storage.refresh();
   }
 

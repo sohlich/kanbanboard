@@ -20,6 +20,7 @@ export class BoardListComponent implements OnInit {
     console.log('Going to board: '+board);
     this._storage.setCurrentBoard(board);
     this._router.navigate(['/board']);
+    this._storage.refresh();
   }
 
 }
