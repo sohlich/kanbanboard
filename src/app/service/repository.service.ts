@@ -34,6 +34,20 @@ export class RepositoryService {
         encoding: 'utf8'
       });
       this._boards = <Board[]>JSON.parse(t);
+      for (var idx = 0; idx < this._boards.length; idx++) {
+        var b = this._boards[idx];
+        if(b.default){
+          this.setCurrentBoard(b);
+          break;
+        }
+      }
+      if(this._currentBoard == null && this._boards.length > 0){
+        this.setCurrentBoard(this._boards[0]);
+      }else{
+        let n = new Board();
+        n.title = ""
+        this.setCurrentBoard(n);
+      }
     }
 
     let dataPath = path.join(this._appDataFolder, 'data');
@@ -71,9 +85,6 @@ export class RepositoryService {
     this.autosave();
   }
 
-
-
-
   refresh() {
     this._observableList.next(this._tasks);
   }
@@ -97,8 +108,7 @@ export class RepositoryService {
   }
 
    autosave(){
-    console.log("Writing to file "+this._boardFile);
-    fs.writeFileSync(path.join(this._boardFile), JSON.stringify(this._tasks));
+    fs.writeFileSync(this._boardFile, JSON.stringify(this._tasks));
   }
 
 }

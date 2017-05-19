@@ -3,8 +3,9 @@
     display: inline-flex;
     border: 10px;
     vertical-align: top;
-    min-height: 80vh;
     flex: 1;
+    overflow-y: scroll;
+    height: 80vh;
 }
 
 .stage {

@@ -18,7 +18,7 @@ import { BoardListComponent } from './board-list/board-list.component';
 
 const appRoutes: Routes = [
   { path: 'board', component: BoardComponent },
-  { path: '**', component: BoardListComponent }
+  { path: '**', component: BoardComponent }
 ];
 
 @NgModule({
