@@ -17,16 +17,33 @@ export class StageFilter implements PipeTransform {
   }
 }
 
+@Pipe({
+  name: 'toUpper',
+  pure: false
+})
+@Injectable()
+export class UpperFilter implements PipeTransform {
+
+  constructor(){
+  }
+
+  transform(name:string): any {
+    return name.toUpperCase();
+  }
+}
+
 
 @NgModule({
   declarations: [
-    StageFilter
+    StageFilter,
+    UpperFilter
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    StageFilter
+    StageFilter,
+    UpperFilter
   ]
 })
 export class FilterModule { }

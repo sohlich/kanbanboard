@@ -1,15 +1,14 @@
 .boards {
     display: flex;
     flex-direction: column;
-    padding-left: 25%;
-    width: 50%;
 }
 
 .board {
-    width: 100%;
     min-height: 5vh;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     display: flex;
+    flex-direction: row;
+    padding-right: 10px;
 }
 
 .spacer {
@@ -23,4 +22,9 @@
 
 .buttons {
     flex: 1;
+}
+
+.title {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: darkgray;
 }

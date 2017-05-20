@@ -9,9 +9,9 @@
 .stages {
     display: flex;
     display: -webkit-flex;
-    width: 100%;
+    width: 98%;
     flex-direction: row;
-    overflow-x: hidden;
+    overflow-x: visible;
 }
 
 .toolbar {
@@ -33,3 +33,13 @@
     top: 85vh;
     left: 90vw;
 }
+
+.sidebar {
+    width: 20vw;
+}
+
+.boardlist {
+    padding: 2px;
+}
+
+.main-container {}

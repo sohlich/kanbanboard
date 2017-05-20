@@ -1,10 +1,6 @@
-<md-toolbar class="main">
-    <span>Board List</span>
-    <span class="toolbar-spacer"></span>
-    <!--<button class="toolbar-icon" (click)="onAddTask($event)" md-button>
-            <i class="fa fa-plus" aria-hidden="true"></i>
-        </button>-->
-</md-toolbar>
+<div>
+    <span class="title">Boards:</span>
+</div>
 <div class="boards">
     <button *ngFor="let board of _storage._observableBoards | async" class="board" (click)="toBoard(board)" md-button>
         <span class="buttons">
@@ -15,4 +11,5 @@
         </span>
         <span class="bold">{{board.title}}</span>
     </button>
+    <button md-button><i class="fa fa-plus" aria-hidden="true"></i></button>
 </div>
