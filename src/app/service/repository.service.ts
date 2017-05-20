@@ -37,13 +37,14 @@ export class RepositoryService {
       for (var idx = 0; idx < this._boards.length; idx++) {
         var b = this._boards[idx];
         if(b.default){
+          console.log('Found default board: '+b.title );
           this.setCurrentBoard(b);
           break;
         }
       }
       if(this._currentBoard == null && this._boards.length > 0){
         this.setCurrentBoard(this._boards[0]);
-      }else{
+      }else if(this._currentBoard == null){
         let n = new Board();
         n.title = ""
         this.setCurrentBoard(n);
