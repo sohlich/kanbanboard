@@ -13,7 +13,7 @@ app.on('ready', function() {
     var openWindow = function() {
         mainWindow = new BrowserWindow({ width: 1280, height: 960 });
         mainWindow.loadURL(url.format({
-            pathname: path.join(__dirname, 'dist', 'index.html'),
+            pathname: path.join(__dirname, 'build', 'index.html'),
             protocol: 'file:',
             slashes: true
         }));

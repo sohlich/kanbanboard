@@ -9,10 +9,10 @@ import { Task } from "app/model/task";
 @Injectable()
 export class StageFilter implements PipeTransform {
 
-  constructor(){
+  constructor() {
   }
 
-  transform(items: Task[],stage:string): any {
+  transform(items: Task[], stage: string): any {
     return items.filter(item => item.stage === stage);
   }
 }
@@ -24,11 +24,15 @@ export class StageFilter implements PipeTransform {
 @Injectable()
 export class UpperFilter implements PipeTransform {
 
-  constructor(){
+  constructor() {
   }
 
-  transform(name:string): any {
-    return name.toUpperCase();
+  transform(name: string): any {
+    if (name != null) { 
+      return name.toUpperCase();
+     } else {
+      return '';
+    };
   }
 }
 
