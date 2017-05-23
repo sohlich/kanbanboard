@@ -36,7 +36,7 @@ export class BoardComponent implements OnInit {
 
     let obs = dialogRef.afterClosed().subscribe(result => {
       if (result !== "OK") { return; }
-      let task = dialogRef.config.data;
+      let task = dialogRef._containerInstance.dialogConfig.data;
       task.created = new Date().getTime();
       task.stage = this.board.stages[0];
       this._storage.addTask(task);
