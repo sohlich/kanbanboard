@@ -12,7 +12,8 @@ export class TaskFormComponent implements OnInit {
 
   private _task: Task;
 
-  constructor(@Inject(MD_DIALOG_DATA) data: any) { 
+  constructor(@Inject(MD_DIALOG_DATA) data: any,
+    private _dialogRef: MdDialogRef<TaskFormComponent>) { 
     this._task = <Task> data;
   }
 

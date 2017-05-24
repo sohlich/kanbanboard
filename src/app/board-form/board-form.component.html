@@ -1,0 +1,15 @@
+<h1 md-dialog-title>Add/Edit Board</h1>
+<div md-dialog-content>
+    <md-input-container>
+        <input [(ngModel)]="_board.title" mdInput placeholder="Title">
+    </md-input-container>
+    <br/>
+    <md-input-container *ngFor="let stage of inputs; let i = index;">
+        <input [(ngModel)]="stage.value" mdInput placeholder="Stage name">
+    </md-input-container>
+    <button md-button (click)="addStage()">+</button>
+</div>
+<div md-dialog-actions>
+    <button md-button (click)="_dialogRef.close('Cancel')">Cancel</button>
+    <button md-button (click)="okClick()">OK</button>
+</div>

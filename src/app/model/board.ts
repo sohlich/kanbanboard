@@ -1,5 +1,6 @@
 export class Board {
-    title: string;
-    stages: string[];
-    default: boolean;
+    title: string = "";
+    stages: string[] = [];
+    default: boolean = false;
+
 }

@@ -10,16 +10,16 @@ declare var path: any;
 @Injectable()
 export class RepositoryService {
 
-  _topFile: string;
-  _boardFile: string;
+  private _boardListUrl: string;
+  private _boardFile: string;
+  private _appDataFolder: string;
+  private _currentBoard: Board;
+
   _tasks: Task[] = [];
   _boards: Board[] = [];
   _observableList: BehaviorSubject<Task[]> = new BehaviorSubject([]);
   _observableBoards: BehaviorSubject<Board[]> = new BehaviorSubject([]);
   _observableCurrentBoard: BehaviorSubject<Board> = new BehaviorSubject(new Board());
-
-  _appDataFolder: string;
-  private _currentBoard: Board;
 
 
   constructor() {
@@ -27,24 +27,24 @@ export class RepositoryService {
     console.log("App Data: " + this._appDataFolder);
 
 
-    this._topFile = path.join(this._appDataFolder, 'board_list.json');
+    this._boardListUrl = path.join(this._appDataFolder, 'board_list.json');
 
-    if (fs.existsSync(this._topFile)) {
-      let t: string = fs.readFileSync(this._topFile, {
+    if (fs.existsSync(this._boardListUrl)) {
+      let t: string = fs.readFileSync(this._boardListUrl, {
         encoding: 'utf8'
       });
       this._boards = <Board[]>JSON.parse(t);
       for (var idx = 0; idx < this._boards.length; idx++) {
         var b = this._boards[idx];
-        if(b.default){
-          console.log('Found default board: '+b.title );
+        if (b.default) {
+          console.log('Found default board: ' + b.title);
           this.setCurrentBoard(b);
           break;
         }
       }
-      if(this._currentBoard == null && this._boards.length > 0){
+      if (this._currentBoard == null && this._boards.length > 0) {
         this.setCurrentBoard(this._boards[0]);
-      }else if(this._currentBoard == null){
+      } else if (this._currentBoard == null) {
         let n = new Board();
         n.title = ""
         this.setCurrentBoard(n);
@@ -61,19 +61,25 @@ export class RepositoryService {
   setCurrentBoard(board: Board) {
     console.log("RepositoryService: setting current board: " + board);
     this._currentBoard = board;
-    console.log("Loading board: "+JSON.stringify(board));
+    console.log("Loading board: " + JSON.stringify(board));
     this.loadBoardData(board.title);
     this._observableCurrentBoard.next(this._currentBoard);
   }
 
-   getCurrentBoard():Board {
-      return this._currentBoard;
+  getCurrentBoard(): Board {
+    return this._currentBoard;
   }
 
   addTask(task: Task) {
     this._tasks.push(task);
     this.refresh();
     this.autosave();
+  }
+
+  addBoard(board: Board) {
+    this._boards.push(board);
+    this.refreshBoards();
+    this.saveBoardListFile();
   }
 
   removeTask(task: Task) {
@@ -96,20 +102,24 @@ export class RepositoryService {
 
 
   private loadBoardData(name: string) {
-    let lowerName = 'board_'+name.toLowerCase()+'.json';
+    let lowerName = 'board_' + name.toLowerCase() + '.json';
     this._boardFile = path.join(this._appDataFolder, 'data', lowerName);
     if (fs.existsSync(this._boardFile)) {
       let t: string = fs.readFileSync(this._boardFile, {
         encoding: 'utf8'
       });
       this._tasks = <Task[]>JSON.parse(t);
-    }else{
+    } else {
       this._tasks = [];
     }
   }
 
-   autosave(){
+  autosave() {
     fs.writeFileSync(this._boardFile, JSON.stringify(this._tasks));
+  }
+
+  saveBoardListFile(){
+    fs.writeFileSync(this._boardListUrl, JSON.stringify(this._boards));
   }
 
 }

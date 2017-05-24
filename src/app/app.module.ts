@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
@@ -15,6 +15,7 @@ import { RepositoryService } from './service/repository.service'
 import { FilterModule } from "app/modules/filter.module";
 import { TaskFormComponent } from './task-form/task-form.component';
 import { BoardListComponent } from './board-list/board-list.component';
+import { BoardFormComponent } from './board-form/board-form.component';
 
 const appRoutes: Routes = [
   { path: 'board', component: BoardComponent },
@@ -28,10 +29,12 @@ const appRoutes: Routes = [
     StageComponent,
     TaskComponent,
     TaskFormComponent,
-    BoardListComponent
+    BoardListComponent,
+    BoardFormComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     MaterialModule,
@@ -41,6 +44,6 @@ const appRoutes: Routes = [
   ],
   providers: [RepositoryService],
   bootstrap: [AppComponent],
-  entryComponents: [TaskFormComponent]
+  entryComponents: [TaskFormComponent,BoardFormComponent]
 })
 export class AppModule { }
