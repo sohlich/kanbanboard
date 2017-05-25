@@ -1,4 +1,4 @@
-<div dnd-draggable class="task_box" [dragEnabled]="true" [dragData]="task" (onDragSuccess)="onDrag($event)">
+<div dnd-draggable class="task_box" [dragEnabled]="true" [dragData]="task" (onDragStart)="onDrag($event)">
     <div class="task_title">
         <span class="bold">{{task.title}}</span><span class="spacer"></span>
         <div class="buttons">
