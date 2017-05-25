@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { Task } from './../model/task';
 import { RepositoryService } from "app/service/repository.service";
 
@@ -11,7 +11,7 @@ export class TaskComponent implements OnInit {
 
   @Input() task : Task;
 
-  constructor(private _storage:RepositoryService) { 
+  constructor(private _storage:RepositoryService,private _ngZone: NgZone) { 
   }
 
   ngOnInit() {
@@ -19,6 +19,7 @@ export class TaskComponent implements OnInit {
 
   onDrag(event){
     this._storage.removeTask(this.task);
+    this._ngZone.run(() => {console.log('Outside Done!') });
   }
 
   onDelete(){
