@@ -9,20 +9,25 @@ import { RepositoryService } from "app/service/repository.service";
 })
 export class TaskComponent implements OnInit {
 
-  @Input() task : Task;
+  @Input() task: Task;
 
-  constructor(private _storage:RepositoryService,private _ngZone: NgZone) { 
+  constructor(private _storage: RepositoryService, private _ngZone: NgZone) {
   }
 
   ngOnInit() {
   }
 
-  onDrag(event){
-    this._storage.removeTask(this.task);
-    this._ngZone.run(() => {console.log('Outside Done!') });
+  onDrag(event) {
+    // Hack to make the component disappear from original
+    // stage. 
+    this._ngZone.runOutsideAngular(() => {
+      this._storage.removeTask(this.task);
+      this._ngZone.run(() => { });
+    })
+
   }
 
-  onDelete(){
+  onDelete() {
     this._storage.removeTask(this.task);
     this._storage.autosave();
   }

@@ -20,7 +20,6 @@ export class StageComponent implements OnInit {
   }
 
   public acceptDrop(event) {
-    console.log("Accepted drop.");
     let data: Task = <Task>event.dragData;
     data.stage = this.title;
     this._storage.addTask(data);

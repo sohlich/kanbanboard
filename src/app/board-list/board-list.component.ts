@@ -12,6 +12,8 @@ import { BoardFormComponent } from "app/board-form/board-form.component";
 })
 export class BoardListComponent implements OnInit {
 
+  private selected: string;
+
   constructor(private _storage: RepositoryService,public dialog: MdDialog) { }
 
   ngOnInit() {
@@ -19,6 +21,7 @@ export class BoardListComponent implements OnInit {
   }
 
   toBoard(board: Board){
+    this.selected = board.title;
     this._storage.setCurrentBoard(board);
     this._storage.refresh();
   }

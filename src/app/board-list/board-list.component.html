@@ -2,14 +2,15 @@
     <span class="title">Boards:</span>
 </div>
 <div class="boards">
-    <button *ngFor="let board of _storage._observableBoards | async" class="board" (click)="toBoard(board)" md-button>
+    <div *ngFor="let board of _storage._observableBoards | async" [ngClass]="board.title !== selected ? 'board' : 'board_selected'" (click)="toBoard(board)">
         <span class="buttons">
 
             <!--<i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
             <i class="fa fa-archive" aria-hidden="true"></i>-->
             <i *ngIf="board.default" class="fa fa-home" aria-hidden="true"></i>
+            <i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
         </span>
         <span class="bold">{{board.title}}</span>
-    </button>
+    </div>
     <button (click)="addBoard()" md-button><i class="fa fa-plus" aria-hidden="true"></i></button>
 </div>
