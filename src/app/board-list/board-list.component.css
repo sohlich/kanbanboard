@@ -11,13 +11,25 @@
     padding-right: 10px;
 }
 
+.board div {
+    padding-top: 10px;
+}
+
+.board.selected {
+    color: gray;
+    font-weight: 900;
+    background-color: lightgray;
+}
+
 .spacer {
     flex: 1;
 }
 
-.bold {
+.name {
     flex: 1;
     font-weight: 900;
+    min-width: 10vw;
+    padding-left: 5px;
 }
 
 .buttons {

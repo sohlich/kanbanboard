@@ -66,6 +66,16 @@ export class RepositoryService {
     this._observableCurrentBoard.next(this._currentBoard);
   }
 
+  removeBoard(board:Board){
+    var index = this._boards.indexOf(board, 0);
+    if (index > -1) {
+      console.log('Found at index: ' + index);
+      this._boards.splice(index, 1);
+    }
+    this._observableBoards.next(this._boards);
+    this.saveBoardListFile();
+  }
+
   getCurrentBoard(): Board {
     return this._currentBoard;
   }

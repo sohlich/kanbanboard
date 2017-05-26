@@ -1,14 +1,14 @@
+<md-toolbar class="main">
+    <i class="fa fa-bars" aria-hidden="true" (click)="sidenav.open()"></i>
+    <span class="toolbar-spacer"></span>
+    <span>{{board.title | toUpper}}</span>
+</md-toolbar>
 <md-sidenav-container class="main-container">
     <md-sidenav #sidenav class="sidebar">
         <div class="boardlist">
             <app-board-list></app-board-list>
         </div>
     </md-sidenav>
-    <md-toolbar class="main">
-        <i class="fa fa-bars" aria-hidden="true" (click)="sidenav.open()"></i>
-        <span class="toolbar-spacer"></span>
-        <span>{{board.title | toUpper}}</span>
-    </md-toolbar>
     <div class="stages">
         <app-stage *ngFor="let stage of board.stages" title="{{stage}}" class="stage"></app-stage>
     </div>

@@ -4,8 +4,13 @@
         <input [(ngModel)]="_board.title" mdInput placeholder="Title">
     </md-input-container>
     <br/>
-    <md-input-container *ngFor="let stage of inputs; let i = index;">
-        <input [(ngModel)]="stage.value" mdInput placeholder="Stage name">
+    <md-checkbox>Default</md-checkbox>
+    <md-chip-list *ngFor="let stage of _board.stages; let i = index;">
+        <md-chip>{{stage}}</md-chip>
+    </md-chip-list>
+
+    <md-input-container>
+        <input [(ngModel)]="stageName" mdInput placeholder="Stage name">
     </md-input-container>
     <button md-button (click)="addStage()">+</button>
 </div>

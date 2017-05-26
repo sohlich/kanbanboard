@@ -10,7 +10,7 @@ import { Board } from "app/model/board";
 export class BoardFormComponent implements OnInit {
 
   _board: Board;
-  inputs = [{ value: "stage name" }];
+  stageName:string;
 
 constructor(@Inject(MD_DIALOG_DATA) data: any, private _dialogRef: MdDialogRef<BoardFormComponent>) { 
     this._board = <Board> data;
@@ -20,14 +20,10 @@ constructor(@Inject(MD_DIALOG_DATA) data: any, private _dialogRef: MdDialogRef<B
   }
 
   addStage() {
-    this.inputs.push({ "value": '' });
+    this._board.stages.push(this.stageName);
   }
 
   okClick() {
-    this._board.stages = [];
-    this.inputs.forEach(val => {
-      this._board.stages.push(val.value);
-    });
     this._dialogRef.close('OK');
   }
 
