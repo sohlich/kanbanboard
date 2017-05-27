@@ -4,6 +4,8 @@ import { RepositoryService } from "app/service/repository.service";
 import { MdDialog } from "@angular/material";
 import { TaskFormComponent } from "app/task-form/task-form.component";
 import { Board } from "app/model/board";
+import { TaskEdit } from "app/model/taskedit";
+import { EditAction } from "app/model/edit-action.enum";
 
 
 @Component({
@@ -31,12 +33,12 @@ export class BoardComponent implements OnInit {
     let dialogRef = this.dialog.open(TaskFormComponent, {
       width: '50vw',
       height: '25vh',
-      data: new Task()
+      data: new TaskEdit(EditAction.NEW,null)
     });
 
     let obs = dialogRef.afterClosed().subscribe(result => {
       if (result !== "OK") { return; }
-      let task = dialogRef._containerInstance.dialogConfig.data;
+      let task = dialogRef._containerInstance.dialogConfig.data.data;
       task.created = new Date().getTime();
       task.stage = this.board.stages[0];
       this._storage.addTask(task);

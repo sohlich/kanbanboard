@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { Task } from './../model/task';
 import { RepositoryService } from "app/service/repository.service";
+import { TaskFormComponent } from "app/task-form/task-form.component";
+import { MdDialog } from "@angular/material";
+import { TaskEdit } from "app/model/taskedit";
+import { EditAction } from "app/model/edit-action.enum";
 
 @Component({
   selector: 'app-task',
@@ -11,7 +15,9 @@ export class TaskComponent implements OnInit {
 
   @Input() task: Task;
 
-  constructor(private _storage: RepositoryService, private _ngZone: NgZone) {
+  constructor(private _storage: RepositoryService,
+    private _ngZone: NgZone,
+    public dialog: MdDialog) {
   }
 
   ngOnInit() {
@@ -30,6 +36,22 @@ export class TaskComponent implements OnInit {
   onDelete() {
     this._storage.removeTask(this.task);
     this._storage.autosave();
+  }
+
+  onEdit() {
+    let dialogRef = this.dialog.open(TaskFormComponent, {
+      width: '50vw',
+      height: '25vh',
+      data: new TaskEdit(EditAction.EDIT,this.task)
+    });
+
+    let obs = dialogRef.afterClosed().subscribe(result => {
+      if (result !== "OK") { return; }
+      this._storage.autosave();
+      obs.unsubscribe();
+    });
+
+
   }
 
 }

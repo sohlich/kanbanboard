@@ -14,6 +14,12 @@
     color: burlywood;
 }
 
+.buttons div {
+    width: 1.5em;
+    height: 1.5em;
+    text-align: right;
+}
+
 .task_description {
     background-color: #ffe680;
     padding: 10px;
