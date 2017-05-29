@@ -36,18 +36,41 @@ export class UpperFilter implements PipeTransform {
   }
 }
 
+@Pipe({
+  name: 'toLower',
+  pure: false
+})
+@Injectable()
+export class LowerFilter implements PipeTransform {
+
+  constructor() {
+  }
+
+  transform(name: string): any {
+    if (name != null) { 
+      return name.toLowerCase();
+     } else {
+      return '';
+    };
+  }
+}
+
+
+
 
 @NgModule({
   declarations: [
     StageFilter,
-    UpperFilter
+    UpperFilter,
+    LowerFilter
   ],
   imports: [
     CommonModule
   ],
   exports: [
     StageFilter,
-    UpperFilter
+    UpperFilter,
+    LowerFilter
   ]
 })
 export class FilterModule { }

@@ -1,17 +1,22 @@
-<div>
-    <div class="title">BOARDS:</div>
-</div>
-<div class="boards">
-    <div *ngFor="let board of _storage._observableBoards | async" [ngClass]="board.title !== _selected ? 'board' : 'board selected'" (click)="toBoard(board)">
-        <div class="name">{{board.title}}</div>
+<div class="board_list">
+    <div class="title">
+        <span>BOARDS</span>
         <div class="spacer"></div>
-        <div class="buttons">
-
-            <!--<i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
-            <i class="fa fa-archive" aria-hidden="true"></i>-->
-            <i *ngIf="board.default" class="fa fa-home" aria-hidden="true"></i>
-            <i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete(board)"></i>
-        </div>
+        <i (click)="addBoard()" class="fa fa-plus" aria-hidden="true"></i>
     </div>
-    <button (click)="addBoard()" md-button><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <div class="spacer">&nbsp;</div>
+    <div class="boards">
+        <div *ngFor="let board of _storage._observableBoards | async" [ngClass]="board.title !== _selected ? 'board' : 'board selected'" (click)="toBoard(board)">
+            <div class="name">{{board.title | toLower}}</div>
+            <div class="spacer"></div>
+            <div class="buttons">
+
+                <!--<i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
+            <i class="fa fa-archive" aria-hidden="true"></i>-->
+                <i *ngIf="board.default" class="fa fa-home" aria-hidden="true"></i>
+                <i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete(board)"></i>
+            </div>
+        </div>
+
+    </div>
 </div>

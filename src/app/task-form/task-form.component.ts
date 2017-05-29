@@ -11,8 +11,10 @@ import { EditAction } from "app/model/edit-action.enum";
 })
 export class TaskFormComponent implements OnInit {
 
+
   private _task: Task;
   private _action: EditAction;
+  title:string;
 
   constructor( @Inject(MD_DIALOG_DATA) private _content: any,
     private _dialogRef: MdDialogRef<TaskFormComponent>) {

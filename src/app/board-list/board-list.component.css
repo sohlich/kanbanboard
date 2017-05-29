@@ -1,18 +1,21 @@
+.board_list {
+    display: flex;
+    flex-direction: column;
+}
+
 .boards {
     display: flex;
     flex-direction: column;
 }
 
 .board {
-    min-height: 5vh;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     display: flex;
     flex-direction: row;
-    padding-right: 10px;
 }
 
 .board div {
-    padding-top: 10px;
+    padding: 2px;
 }
 
 .board.selected {
@@ -39,4 +42,6 @@
 .title {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     color: darkgray;
+    display: flex;
+    padding-right: 10px;
 }

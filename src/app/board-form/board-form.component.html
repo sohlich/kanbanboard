@@ -1,10 +1,10 @@
 <h1 md-dialog-title>Add/Edit Board</h1>
 <div md-dialog-content>
+    <md-checkbox>Home board</md-checkbox>
     <md-input-container>
         <input [(ngModel)]="_board.title" mdInput placeholder="Title">
     </md-input-container>
-    <br/>
-    <md-checkbox>Default</md-checkbox>
+
     <md-chip-list *ngFor="let stage of _board.stages; let i = index;">
         <md-chip>{{stage}}</md-chip>
     </md-chip-list>
