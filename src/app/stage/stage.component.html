@@ -1,10 +1,14 @@
-<div class="stage">
-    <div class="title">
-        <span>{{title}}</span>
-    </div>
-    <div cols="4" dnd-droppable class="tasklist" (onDropSuccess)="acceptDrop($event)">
-        <div class="card_content">
-            <app-task [task]="task" class="task" *ngFor="let task of _storage._observableList | async | stageFilter:title"></app-task>
+<div class="panel panel-default stage">
+    <div class="panel-heading" (click)="onAddTask($event)">
+        <div>
+            {{title}}
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
         </div>
     </div>
-</div>
+    <div class="panel-body">
+        <div dnd-droppable class="tasklist" (onDropSuccess)="acceptDrop($event)">
+            <div class="card_content">
+                <app-task [task]="task" class="task" *ngFor="let task of _storage._observableList | async | stageFilter:title"></app-task>
+            </div>
+        </div>
+    </div>
