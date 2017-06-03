@@ -1,5 +1,5 @@
 <div class="panel panel-default stage">
-    <div class="panel-heading" (click)="onAddTask($event)">
+    <div class="panel-heading" (click)="taskDialog.show()">
         <div>
             {{title}}
             <i class="fa fa-plus-square" aria-hidden="true"></i>
@@ -12,3 +12,5 @@
             </div>
         </div>
     </div>
+</div>
+<app-task-dialog #taskDialog></app-task-dialog>

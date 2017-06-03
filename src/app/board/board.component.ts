@@ -17,7 +17,7 @@ export class BoardComponent implements OnInit {
 
   board: Board;
 
-  constructor(private _storage: RepositoryService, public dialog: MdDialog) {
+  constructor(private _storage: RepositoryService) {
     this.board = _storage.getCurrentBoard();
   }
 
@@ -28,23 +28,7 @@ export class BoardComponent implements OnInit {
     this._storage.refresh();
   }
 
-  onAddTask(event: any) {
-
-    let dialogRef = this.dialog.open(TaskFormComponent, {
-      width: '50vw',
-      height: '25vh',
-      data: new TaskEdit(EditAction.NEW,null)
-    });
-
-    let obs = dialogRef.afterClosed().subscribe(result => {
-      if (result !== "OK") { return; }
-      let task = dialogRef._containerInstance.dialogConfig.data.data;
-      task.created = new Date().getTime();
-      task.stage = this.board.stages[0];
-      this._storage.addTask(task);
-      obs.unsubscribe();
-    });
-  }
+  
 
 
 
