@@ -1,5 +1,5 @@
 <div class="panel panel-default stage">
-    <div class="panel-heading" (click)="taskDialog.show()">
+    <div class="panel-heading" (click)="onAdd()">
         <div>
             {{title}}
             <i class="fa fa-plus-square" aria-hidden="true"></i>
@@ -8,7 +8,7 @@
     <div class="panel-body">
         <div dnd-droppable class="tasklist" (onDropSuccess)="acceptDrop($event)">
             <div class="card_content">
-                <app-task [task]="task" class="task" *ngFor="let task of _storage._observableList | async | stageFilter:title"></app-task>
+                <app-task [task]="task" (edit)="onEdit($event)" class="task" *ngFor="let task of _storage._observableList | async | stageFilter:title"></app-task>
             </div>
         </div>
     </div>

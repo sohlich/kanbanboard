@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit, Input, NgZone, Output, EventEmitter } from '@angular/core';
 import { Task } from './../model/task';
 import { RepositoryService } from "app/service/repository.service";
 import { TaskFormComponent } from "app/task-form/task-form.component";
@@ -11,17 +11,17 @@ import { EditAction } from "app/model/edit-action.enum";
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
 
   @Input() task: Task;
+  @Output() edit = new EventEmitter();
 
   constructor(private _storage: RepositoryService,
     private _ngZone: NgZone,
     public dialog: MdDialog) {
   }
 
-  ngOnInit() {
-  }
+  
 
   onDrag(event) {
     // Hack to make the component disappear from original
@@ -39,19 +39,7 @@ export class TaskComponent implements OnInit {
   }
 
   onEdit() {
-    let dialogRef = this.dialog.open(TaskFormComponent, {
-      width: '50vw',
-      height: '25vh',
-      data: new TaskEdit(EditAction.EDIT,this.task)
-    });
-
-    let obs = dialogRef.afterClosed().subscribe(result => {
-      if (result !== "OK") { return; }
-      this._storage.autosave();
-      obs.unsubscribe();
-    });
-
-
+    this.edit.emit(this.task);
   }
 
 }
