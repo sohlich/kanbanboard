@@ -1,19 +1,13 @@
 <div dnd-draggable class="task_box" [dragEnabled]="true" [dragData]="task" (onDragSuccess)="onDrag($event)">
     <div class="task_title">
         <span class="bold">{{task.title}}</span><span class="spacer"></span>
-        <div class="buttons">
-            <div [mdMenuTriggerFor]="menu">
-                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-            </div>
-        </div>
-        <md-menu #menu="mdMenu">
-            <span (click)="onDelete()" md-menu-item><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Delete</span>
+        <div *ngIf="showButtons" class="buttons">
+            <div (click)="onEdit()" class="dropdown-item"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+            <div (click)="onDelete()" class="dropdown-item"><i class="fa fa-times" aria-hidden="true"></i></div>
             <!--<span md-menu-item><i class="fa fa-archive" aria-hidden="true"></i>&nbsp;Archive</span>-->
-            <span (click)="onEdit()" md-menu-item><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit</span>
-        </md-menu>
+        </div>
     </div>
     <div class="task_description">
         {{task.description}}
     </div>
-
 </div>

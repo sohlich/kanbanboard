@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgZone, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, NgZone, Output, EventEmitter, ViewChild, HostListener } from '@angular/core';
 import { Task } from './../model/task';
 import { RepositoryService } from "app/service/repository.service";
 import { TaskFormComponent } from "app/task-form/task-form.component";
@@ -13,15 +13,19 @@ import { EditAction } from "app/model/edit-action.enum";
 })
 export class TaskComponent {
 
+
   @Input() task: Task;
   @Output() edit = new EventEmitter();
+
+  public showButtons = false;
+
 
   constructor(private _storage: RepositoryService,
     private _ngZone: NgZone,
     public dialog: MdDialog) {
   }
 
-  
+
 
   onDrag(event) {
     // Hack to make the component disappear from original
@@ -40,6 +44,16 @@ export class TaskComponent {
 
   onEdit() {
     this.edit.emit(this.task);
+  }
+
+  @HostListener('mouseover')
+  onMouseOver() {
+    this.showButtons = true;
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.showButtons = false;
   }
 
 }
