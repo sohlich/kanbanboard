@@ -15,7 +15,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dist": "build --mac"
+    "dist": "build --mac",
+    "distwin": "build -w"
   },
   "private": true,
   "dependencies": {
@@ -32,8 +33,6 @@
     "@angular/router": "^4.1.3",
     "@types/node": "^6.0.73",
     "core-js": "^2.4.1",
-    "electron": "^1.7.1",
-    "electron-builder": "^17.10.0",
     "font-awesome": "^4.7.0",
     "ng2-dnd": "^4.0.2",
     "protractor": "^5.1.2",
