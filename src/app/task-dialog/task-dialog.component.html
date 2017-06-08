@@ -1,0 +1,26 @@
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Task - Edit</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="cancel()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)]="task.title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" rows="3" placeholder="Description" [(ngModel)]="task.description" name="description"></textarea>
+                    </div>
+                    <button class="btn btn-default" (click)="ok()">OK</button>
+                    <button class="btn btn-default" (click)="cancel()">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

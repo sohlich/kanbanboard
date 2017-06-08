@@ -16,6 +16,9 @@ import { FilterModule } from "app/modules/filter.module";
 import { TaskFormComponent } from './task-form/task-form.component';
 import { BoardListComponent } from './board-list/board-list.component';
 import { BoardFormComponent } from './board-form/board-form.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'board', component: BoardComponent },
@@ -30,7 +33,8 @@ const appRoutes: Routes = [
     TaskComponent,
     TaskFormComponent,
     BoardListComponent,
-    BoardFormComponent
+    BoardFormComponent,
+    TaskDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,8 @@ const appRoutes: Routes = [
     HttpModule,
     MaterialModule,
     DndModule.forRoot(),
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes,{ enableTracing: true }),
     FilterModule
   ],

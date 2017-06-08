@@ -10,6 +10,11 @@
     display: flex;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
 .buttons i {
     color: burlywood;
 }
@@ -18,6 +23,10 @@
     width: 1.5em;
     height: 1.5em;
     text-align: right;
+}
+
+.buttons div :hover {
+    background: gray;
 }
 
 .task_description {
